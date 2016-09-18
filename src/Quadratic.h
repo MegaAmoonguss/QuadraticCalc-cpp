@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef QUADRATIC_H_
 #define QUADRATIC_H_
 
