@@ -1,9 +1,4 @@
-/*
- * Quadratic.h
- *
- *  Created on: Jun 29, 2016
- *      Author: Graham Preston
- */
+#pragma once
 
 #ifndef QUADRATIC_H_
 #define QUADRATIC_H_
@@ -18,6 +13,8 @@ public:
 	Quadratic(int aC, int bC, int cC);
 	void getWorkingFactors(int workingFactors[]);
 	std::vector<int> factorEquation();
+	int getDiscriminant();
+	std::vector<double> solve();
 };
 
 #endif /* QUADRATIC_H_ */

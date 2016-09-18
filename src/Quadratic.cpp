@@ -1,32 +1,26 @@
-/*
- * Quadratic.cpp
- *
- *  Created on: Jun 29, 2016
- *      Author: Graham Preston
- */
-
 #include "Quadratic.h"
-#include <vector>
 #include <iostream>
+#include <algorithm>
+#include <vector>
+#include <math.h>
 
 using namespace std;
 
-static vector<int> factor(int n) {
+vector<int> factor(int n) {
 	vector<int> factors;
 
-	if (n > 0) {
-		for (int i = 1; i <= n; i++) {
-			if (n % i == 0)
-				factors.push_back(i);
-		}
-	}
-	else {
-		for (int i = 1; i <= n*-1; i++) {
-			if (n % i == 0)
-				factors.push_back(i);
+	if (n < 0)
+		n *= -1;
+
+	for (int i = 1; i <= sqrt(n); i++) {
+		if (n % i == 0) {
+			factors.push_back(i);
+			if (n / i != i)
+				factors.push_back(n / i);
 		}
 	}
 
+	sort(factors.begin(), factors.end());
 	return factors;
 }
 
@@ -77,7 +71,7 @@ void Quadratic::getWorkingFactors(int workingFactors[]) {
 }
 
 vector<int> Quadratic::factorEquation() {
-	int workingFactors[2] = {0, 0};
+	int workingFactors[2] = { 0, 0 };
 	getWorkingFactors(workingFactors);
 
 	if (workingFactors[0] == 0 && workingFactors[1] == 0) {
@@ -89,15 +83,32 @@ vector<int> Quadratic::factorEquation() {
 	int group1GCF = findGCF(a, workingFactors[0]);
 	int group2GCF = findGCF(workingFactors[1], c);
 
-	if ((a/group1GCF) != (workingFactors[1]/group2GCF) || (workingFactors[0]/group1GCF) != (c/group2GCF)) {
+	if ((a / group1GCF) != (workingFactors[1] / group2GCF) || (workingFactors[0] / group1GCF) != (c / group2GCF)) {
 		group2GCF *= -1;
 	}
 
 	vector<int> finalEquation;
 	finalEquation.push_back(group1GCF);
 	finalEquation.push_back(group2GCF);
-	finalEquation.push_back(a/group1GCF);
-	finalEquation.push_back(workingFactors[0]/group1GCF);
+	finalEquation.push_back(a / group1GCF);
+	finalEquation.push_back(workingFactors[0] / group1GCF);
 
 	return finalEquation;
+}
+
+int Quadratic::getDiscriminant() {
+	int discrim = (b * b) - (4 * a * c);
+	return discrim;
+}
+
+vector<double> Quadratic::solve() {
+	vector<double> solutions;
+	if (getDiscriminant() > 0) {
+		solutions.push_back(((-1 * b) + sqrt(pow(b, 2) - (4 * a * c))) / (2 * a));
+		solutions.push_back(((-1 * b) - sqrt(pow(b, 2) - (4 * a * c))) / (2 * a));
+	}
+	else if (getDiscriminant() == 0)
+		solutions.push_back(((-1 * b) + sqrt(pow(b, 2) - (4 * a * c))) / (2 * a));
+
+	return solutions;
 }
