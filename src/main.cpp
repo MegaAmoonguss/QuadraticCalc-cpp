@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "Quadratic.h"
+#include "quadratic.h"
 
 using namespace std;
 

@@ -8,7 +8,7 @@ private:
 	int a, b, c;
 	std::vector<int> factors;
 public:
-	Quadratic(int aC, int bC, int cC);
+	Quadratic(int a, int b, int c);
 	void getWorkingFactors(int workingFactors[]);
 	std::vector<int> factorEquation();
 	int getDiscriminant();

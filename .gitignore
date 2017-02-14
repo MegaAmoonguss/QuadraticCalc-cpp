@@ -28,9 +28,13 @@
 *.out
 *.app
 
-#Eclipse files
+# Eclipse files
 .settings/
 Debug/
 .cproject
 .metadata
 .project
+
+# Building
+build/
+*.sh

@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <math.h>
-#include "Quadratic.h"
+#include "quadratic.h"
 
 using namespace std;
 
@@ -39,10 +39,10 @@ static int findGCF(int num1, int num2) {
 	return GCF;
 }
 
-Quadratic::Quadratic(int aC, int bC, int cC) {
-	a = aC;
-	b = bC;
-	c = cC;
+Quadratic::Quadratic(int a, int b, int c) {
+	this->a = a;
+	this->b = b;
+	this->c = c;
 	factors = factor(a * c);
 }
 
