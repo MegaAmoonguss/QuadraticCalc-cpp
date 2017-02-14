@@ -2,10 +2,12 @@
 #include <vector>
 #include <string>
 #include "Quadratic.h"
+
 using namespace std;
 
 int main() {
-	cout << endl << "******************************" << endl;
+	cout << endl;
+	cout << "******************************" << endl;
 	cout << "QUADRATIC FACTORING CALCULATOR" << endl;
 	cout << "******************************" << endl;
 

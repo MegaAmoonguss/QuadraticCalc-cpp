@@ -1,8 +1,8 @@
-#include "Quadratic.h"
 #include <iostream>
 #include <algorithm>
 #include <vector>
 #include <math.h>
+#include "Quadratic.h"
 
 using namespace std;
 
